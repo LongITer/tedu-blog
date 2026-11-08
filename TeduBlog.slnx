@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Project Path="src/TeduBlog.Api/TeduBlog.Api.csproj" />
+  <Project Path="src/TeduBlog.Core/TeduBlog.Core.csproj" />
+  <Project Path="src/TeduBlog.Data/TeduBlog.Data.csproj" />
+  <Project Path="src/TeduBlog.WebApp/TeduBlog.WebApp.csproj" />
+</Solution>
