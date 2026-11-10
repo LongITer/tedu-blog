@@ -17,6 +17,5 @@ namespace TeduBlog.Core.SeedWorks
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
 
-
     }
 }

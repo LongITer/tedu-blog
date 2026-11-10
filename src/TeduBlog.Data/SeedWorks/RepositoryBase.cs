@@ -11,7 +11,7 @@ namespace TeduBlog.Data.SeedWorks
 {
     public class RepositoryBase<T, Key> : IRepository<T, Key> where T : class
     {
-        private readonly TeduBlogContext _context;
+        protected readonly TeduBlogContext _context;
         private readonly DbSet<T> _dbSet;   
         public RepositoryBase(TeduBlogContext context)
         {
