@@ -11,12 +11,7 @@ namespace TeduBlog.Core.Models
             {
                 var pageCount = (double)RowCount / PageSize;
                 return (int)Math.Ceiling(pageCount);
-            }
-            set
-            {
-                if (value <= 0) throw new ArgumentOutOfRangeException(nameof(value));
-                PageCount = value;
-            }
+            }    
         }
 
         public int PageSize { get; set; }
