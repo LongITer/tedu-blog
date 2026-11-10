@@ -1,6 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using TeduBlog.Api;
+using TeduBlog.Core.SeedWorks;
+using TeduBlog.Data;
+using TeduBlog.Data.SeedWorks;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<TeduBlogContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped(typeof(IRepository<,>), typeof(RepositoryBase<,>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,5 +33,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Seeding data
+app.MigrateDatabase();
 
 app.Run();
