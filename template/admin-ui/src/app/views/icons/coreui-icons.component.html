@@ -1,0 +1,21 @@
+<app-docs-icons />
+<c-card>
+  <c-card-header>
+    {{ title }}
+    <app-docs-link href="https://github.com/coreui/coreui-icons" text="GitHub" />
+  </c-card-header>
+  <c-card-body>
+    <c-row class="text-center">
+      @for (icon of icons(); track icon) {
+        <c-col class="mb-5" [md]="3" [sm]="4" [xl]="2" [xs]="6">
+          <c-icon size="3xl" [use]="`${spriteUrl}#${icon}`" />
+          <!-- CoreUI icon component same as <svg> with <use> -->
+          <!-- <svg class="icon icon-3xl" aria-hidden="true">
+            <use [attr.href]="spriteUrl + '#' + icon"></use>
+          </svg> -->
+          <div>{{ icon }}</div>
+        </c-col>
+      }
+    </c-row>
+  </c-card-body>
+</c-card>
