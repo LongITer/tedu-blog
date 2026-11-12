@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Bài viết";
+}
+
+@section Header {
+    <header class="masthead" style="background-image: url('@Url.Content("~/assets/img/post-bg.jpg")')">
+        <div class="container position-relative px-4 px-lg-5"><div class="row gx-4 gx-lg-5 justify-content-center"><div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="post-heading"><h1>Khám phá thế giới công nghệ</h1><h2 class="subheading">Kiến thức được chia sẻ để cùng tiến xa hơn</h2><span class="meta">TEDU Blog</span></div>
+        </div></div></div>
+    </header>
+}
+
+<article class="mb-4">
+    <div class="container px-4 px-lg-5"><div class="row gx-4 gx-lg-5 justify-content-center"><div class="col-md-10 col-lg-8 col-xl-7">
+        <p>Chào mừng bạn đến với TEDU Blog. Tại đây, chúng tôi sẽ chia sẻ các bài viết về lập trình, công nghệ và kinh nghiệm phát triển sản phẩm.</p>
+        <p>Các bài viết mới đang được cập nhật. Hãy quay lại để khám phá những nội dung tiếp theo.</p>
+        <a asp-action="Index" class="btn btn-primary text-uppercase">Về trang chủ</a>
+    </div></div></div>
+</article>
