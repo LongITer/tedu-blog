@@ -49,6 +49,15 @@ builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<TeduBlogContext>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AdminUi", policy =>
+    {
+        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+        policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -84,6 +93,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AdminUi");
 
 app.UseAuthorization();
 

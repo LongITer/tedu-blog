@@ -3,67 +3,90 @@
     <c-col lg="6" md="8" xl="5">
       <div class="d-flex flex-column gap-4">
         <div class="text-center">
-          <svg [class]="{ icon: false }" cIcon height="48" name="logo" title="CoreUI Logo"></svg>
+          <svg cIcon height="48" name="logo" title="TEDU Blog"></svg>
         </div>
         <c-card class="p-4">
           <c-card-body class="d-flex flex-column gap-4">
-            <h2 class="h5 text-center mb-0">Login to your account</h2>
-            <form cForm cRow class="gy-3">
+            <div class="text-center">
+              <h1 class="h4 mb-1">Đăng nhập quản trị</h1>
+              <p class="text-body-secondary mb-0">Đăng nhập để quản lý nội dung TEDU Blog</p>
+            </div>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" cForm cRow class="gy-3" novalidate>
               <c-col xs="12">
-                <label cLabel for="email">Email address</label>
-                <input autocomplete="email" cFormControl id="email" placeholder="your@email.com" type="email" />
+                <label cLabel for="username">Tên đăng nhập</label>
+                <input
+                  #usernameModel="ngModel"
+                  autocomplete="username"
+                  cFormControl
+                  id="username"
+                  name="username"
+                  ngModel
+                  placeholder="Nhập tên đăng nhập"
+                  required
+                  type="text"
+                  [attr.aria-invalid]="usernameModel.invalid && usernameModel.touched"
+                />
+                @if (usernameModel.invalid && usernameModel.touched) {
+                  <div class="text-danger small mt-1">Vui lòng nhập tên đăng nhập.</div>
+                }
               </c-col>
               <c-col xs="12">
-                <div class="d-flex justify-content-between">
-                  <label cLabel for="password">Password</label>
-                  <a routerLink="/authentication/password/reset">I forgot password</a>
-                </div>
+                <label cLabel for="password">Mật khẩu</label>
                 <c-input-group>
-                  <input autocomplete="current-password" cFormControl id="password" placeholder="Your password" type="password" />
+                  <input
+                    #passwordModel="ngModel"
+                    autocomplete="current-password"
+                    cFormControl
+                    id="password"
+                    name="password"
+                    ngModel
+                    placeholder="Nhập mật khẩu"
+                    required
+                    [type]="showPassword() ? 'text' : 'password'"
+                    [attr.aria-invalid]="passwordModel.invalid && passwordModel.touched"
+                  />
                   <span cInputGroupText>
-                    <button cButton cTooltip="Show password" class="p-0 link-secondary" color="link" type="button">
+                    <button
+                      cButton
+                      class="p-0 link-secondary"
+                      color="link"
+                      type="button"
+                      [attr.aria-label]="showPassword() ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'"
+                      (click)="showPassword.update(value => !value)"
+                    >
                       <svg cIcon name="eye" size="sm"></svg>
                     </button>
                   </span>
                 </c-input-group>
+                @if (passwordModel.invalid && passwordModel.touched) {
+                  <div class="text-danger small mt-1">Vui lòng nhập mật khẩu.</div>
+                }
               </c-col>
               <c-col xs="12">
                 <c-form-check>
-                  <input cFormCheckInput id="rememberMe" type="checkbox" />
-                  <label cFormCheckLabel for="rememberMe">Remember me on this device</label>
+                  <input cFormCheckInput id="rememberMe" name="rememberMe" ngModel type="checkbox" />
+                  <label cFormCheckLabel for="rememberMe">Ghi nhớ đăng nhập trên thiết bị này</label>
                 </c-form-check>
               </c-col>
+              @if (errorMessage()) {
+                <c-col xs="12">
+                  <div class="alert alert-danger mb-0" role="alert">{{ errorMessage() }}</div>
+                </c-col>
+              }
               <c-col xs="12">
-                <button cButton class="w-100" color="primary" type="submit">Sign in</button>
+                <button cButton class="w-100" color="primary" type="submit" [disabled]="isSubmitting()">
+                  @if (isSubmitting()) {
+                    <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Đang đăng nhập...
+                  } @else {
+                    Đăng nhập
+                  }
+                </button>
               </c-col>
             </form>
-            <div class="position-relative">
-              <hr />
-              <div class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small">
-                or
-              </div>
-            </div>
-            <c-row>
-              <c-col>
-                <button cButton class="w-100" color="" variant="outline">
-                  <svg cIcon class="me-1" name="google"></svg>
-                  Login with Google
-                </button>
-              </c-col>
-              <c-col>
-                <button cButton class="w-100" color="" variant="outline">
-                  <svg cIcon class="me-1" name="apple"></svg>
-                  Login with Apple
-                </button>
-              </c-col>
-            </c-row>
           </c-card-body>
         </c-card>
-        <div class="text-center text-body-secondary">
-          Need an account? <a routerLink="/authentication/register">Sign up</a>
-        </div>
+        <p class="text-center text-body-secondary small mb-0">TEDU Blog · Trang quản trị</p>
       </div>
     </c-col>
   </c-row>
 </c-container>
-

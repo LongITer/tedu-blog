@@ -17,7 +17,7 @@
 
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import {
   AvatarComponent,
@@ -47,6 +47,7 @@ import {
 } from '@coreui/angular';
 
 import { IconDirective } from '@coreui/icons-angular';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-default-header',
@@ -82,6 +83,8 @@ import { IconDirective } from '@coreui/icons-angular';
 export class DefaultHeaderComponent extends HeaderComponent {
 
   readonly #colorModeService = inject(ColorModeService);
+  readonly #authService = inject(AuthService);
+  readonly #router = inject(Router);
   readonly colorMode = this.#colorModeService.colorMode;
 
   readonly colorModes = [
@@ -102,5 +105,10 @@ export class DefaultHeaderComponent extends HeaderComponent {
   readonly sidebarId = input('sidebar1');
 
   readonly searchVisible = signal(false);
+
+  logout(): void {
+    this.#authService.logout();
+    this.#router.navigate(['/authentication/login']);
+  }
 
 }

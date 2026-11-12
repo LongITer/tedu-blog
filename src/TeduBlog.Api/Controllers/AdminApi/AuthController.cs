@@ -53,7 +53,7 @@ namespace TeduBlog.Api.Controllers.AdminApi
 
             // Authorization
             var roles = await _userManager.GetRolesAsync(user);
-            var permissions = new List<string>();
+            var permissions = await this.GetPermissionByUserIdAsync(user.Id.ToString());
             var claim = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
@@ -80,7 +80,7 @@ namespace TeduBlog.Api.Controllers.AdminApi
             });
         }
 
-        private async Task<List<string>> GetPermissionByUserId(string userId)
+        private async Task<List<string>> GetPermissionByUserIdAsync(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
             var roles = await _userManager.GetRolesAsync(user);
