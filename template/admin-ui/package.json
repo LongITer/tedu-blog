@@ -1,0 +1,67 @@
+{
+  "name": "coreui-free-angular-admin-template",
+  "version": "5.7.42",
+  "copyright": "Copyright 2026 creativeLabs Łukasz Holeczek",
+  "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
+  "homepage": "https://coreui.io/angular",
+  "config": {
+    "theme": "default",
+    "coreui_library_short_version": "5.7",
+    "coreui_library_docs_url": "https://coreui.io/angular/docs/"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve -o",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "prebuild": "ng test --watch=false",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/aria": "^22.2.6",
+    "@angular/cdk": "^22.2.6",
+    "@angular/common": "^22.2.5",
+    "@angular/compiler": "^22.2.5",
+    "@angular/core": "^22.2.5",
+    "@angular/forms": "^22.2.5",
+    "@angular/language-service": "^22.2.5",
+    "@angular/localize": "^22.2.5",
+    "@angular/platform-browser": "^22.2.5",
+    "@angular/router": "^22.2.5",
+    "@coreui/angular": "~5.7.42",
+    "@coreui/angular-chartjs": "~5.7.42",
+    "@coreui/chartjs": "^4.2.0",
+    "@coreui/coreui": "^5.9.1",
+    "@coreui/icons": "^3.1.0",
+    "@coreui/icons-angular": "~5.7.42",
+    "@coreui/utils": "^2.0.2",
+    "chart.js": "^4.6.1",
+    "ngx-scrollbar": "^19.1.5",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.9.1"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.2.6",
+    "@angular/cli": "^22.2.6",
+    "@angular/compiler-cli": "^22.2.5",
+    "@types/node": "^26.6.6",
+    "@vitest/browser-playwright": "^5.1.0",
+    "jsdom": "^31.0.0",
+    "playwright": "^1.65.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || ^26.12.1",
+    "npm": ">=10"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-free-angular-admin-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
+  }
+}

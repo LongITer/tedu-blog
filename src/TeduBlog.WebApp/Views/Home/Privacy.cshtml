@@ -1,6 +1,28 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+@{
+    ViewData["Title"] = "Chính sách quyền riêng tư";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@section Header {
+    <header class="masthead" style="background-image: url('@Url.Content("~/assets/img/about-bg.jpg")')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Chính sách</h1>
+                        <span class="subheading">Quyền riêng tư của bạn rất quan trọng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <article class="col-md-10 col-lg-8 col-xl-7">
+            <h2 class="h3">Quyền riêng tư</h2>
+            <p>TEDU Blog tôn trọng quyền riêng tư của người đọc. Trang này hiện chưa thu thập thông tin cá nhân qua biểu mẫu.</p>
+            <p>Khi tính năng tài khoản hoặc liên hệ được bổ sung, chính sách sẽ được cập nhật để giải thích rõ dữ liệu được sử dụng như thế nào.</p>
+        </article>
+    </div>
+</div>
